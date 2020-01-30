@@ -1,3 +1,8 @@
+document.getElementById('add').addEventListener('click', add);
+
+show();
+
+// fetching from database
 function get_todos() {
     var todos = new Array;
     var todos_str = localStorage.getItem('todo');
@@ -9,11 +14,10 @@ function get_todos() {
 
 function add() {
     var task = document.getElementById('task').value;
-
+    document.getElementById('task').value = " ";
     var todos = get_todos();
     todos.push(task);
     localStorage.setItem('todo', JSON.stringify(todos));
-
     show();
 
     return false;
@@ -46,6 +50,3 @@ function show() {
         buttons[i].addEventListener('click', remove);
     };
 }
-
-document.getElementById('add').addEventListener('click', add);
-show();
